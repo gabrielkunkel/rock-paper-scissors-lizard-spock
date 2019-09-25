@@ -8,5 +8,34 @@ namespace RockPaperScissors
 {
     class Game
     {
+
+        List<string> gestureOptions = new List<string>(new string [] { "rock", "paper", "scissors", "lizard", "Spock", });
+        Dictionary<string, string[]> beats = new Dictionary<string, string[]>();
+
+        public Game()
+        {
+            beats.Add("rock", new string[] { "scissors", "lizard" });
+            beats.Add("paper", new string[] { "rock", "Spock" });
+            beats.Add("scissors", new string[] { "paper", "lizard" });
+            beats.Add("lizard", new string[] { "Spock", "paper" });
+            beats.Add("Spock", new string[] { "scissors", "rock" });
+
+        }
+
+        public bool DoesFirstPlayerWin(string firstGesture, string secondGesture)
+        {
+            bool isWinner = false;
+
+            foreach (string item in beats[firstGesture])
+            {
+                if(item == secondGesture)
+                {
+                    isWinner = true;
+                }
+            }
+            
+            return isWinner;
+        }
+
     }
 }
