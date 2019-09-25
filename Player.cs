@@ -9,9 +9,10 @@ namespace RockPaperScissors
     class Player
     {
 
-        int playerScore;
+        public int playerScore;
+        public string currentGesture;
 
-        public virtual string CreateGesture(List<string> gestureList)
+        public virtual string CreateGesture()
         {
             return "a string";
         }
