@@ -44,6 +44,7 @@ namespace RockPaperScissors
                     {
                         Console.WriteLine("That was a cats game. You both chose " + firstPlayer.currentGesture);
                         Console.WriteLine("Redo!");
+                        cats = true;
                     }
                 } while (cats);
 
