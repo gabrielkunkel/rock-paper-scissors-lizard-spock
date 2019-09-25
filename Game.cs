@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors
 {
-    class Hand
+    class Game
     {
-        // todo: various hands
-
     }
 }

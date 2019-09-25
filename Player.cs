@@ -8,10 +8,13 @@ namespace RockPaperScissors
 {
     class Player
     {
-        int score;
 
         // todo: score
-        // 
+
+        public virtual string CreateGesture(List<string> gestureList)
+        {
+            return "a string";
+        }
 
     }
 }
