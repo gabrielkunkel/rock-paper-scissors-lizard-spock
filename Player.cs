@@ -8,10 +8,7 @@ namespace RockPaperScissors
 {
     class Player
     {
-
-        public int playerScore;
+        public int playerScore = 0;
         public string currentGesture;
-
-
     }
 }

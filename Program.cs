@@ -22,12 +22,12 @@ namespace RockPaperScissors
                 switch (command)
                 {
                     case "human":
-                        new Game("human"); 
-                        Game.Run();
+                        Game myHumanGame = new Game("human"); 
+                        myHumanGame.Run();
                         break;
                     case "computer":
-                        new Game("computer");
-                        Game.Run();
+                        Game myComputerGame = new Game("computer");
+                        myComputerGame.Run();
                         break;
                     case "quit":
                         Environment.Exit(0);

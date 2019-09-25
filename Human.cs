@@ -14,8 +14,9 @@ namespace RockPaperScissors
             
         }
 
-        public string GetGesture()
+        public void GetGesture()
         {
+            bool keepLooping = true;
             do
             {
                 Console.WriteLine("Do you choose rock, paper, scissors, lizard, or Spock?");
@@ -28,7 +29,8 @@ namespace RockPaperScissors
                     case "scissors":
                     case "lizard":
                     case "Spock":
-                        base.currentGesture = response;
+                        currentGesture = response;
+                        keepLooping = false;
                         break;
                     case "exit":
                         Environment.Exit(0);
@@ -37,12 +39,10 @@ namespace RockPaperScissors
                         Console.WriteLine("I don't understand. (If you want to quit type 'exit'.");
                         break;
                 }
-            } while (true);
+            } while (keepLooping);
 
         }
 
-
-    }
 
     }
 }

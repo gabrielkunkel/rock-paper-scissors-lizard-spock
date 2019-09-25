@@ -12,7 +12,7 @@ User stories:
 
 (10 points): As a developer, I want to store all of the gesture options/choices in a List<T>. I want to make use of this List somewhere within my code/application.
 
-(10 points): As a player, I want the correct player to win a given round based on the choices* made by each player. 
+(10 points): As a player, I want the correct player to win a given round based on the choices made by each player. 
 
 (10 points): As a player, I want the game of RPSLS to be at minimum a ‘best of three’ to decide a winner.
 
