@@ -12,10 +12,6 @@ namespace RockPaperScissors
         public int playerScore;
         public string currentGesture;
 
-        public virtual string CreateGesture()
-        {
-            return "a string";
-        }
 
     }
 }

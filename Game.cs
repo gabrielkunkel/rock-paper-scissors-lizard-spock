@@ -8,11 +8,10 @@ namespace RockPaperScissors
 {
     class Game
     {
-
-        List<string> gestureOptions = new List<string>(new string [] { "rock", "paper", "scissors", "lizard", "Spock", });
         Dictionary<string, string[]> beats = new Dictionary<string, string[]>();
         string secondPlayerChoice;
-
+        bool didFirstPlayerWinGame;
+        bool isGameNotDoneYet = true;
 
         public Game(string secondPlayerChoice)
         {
@@ -27,6 +26,16 @@ namespace RockPaperScissors
 
         public void Run()
         {
+
+            // create human or computer player
+
+            do
+            {
+                // creat
+
+
+
+            } while (isGameNotDoneYet);
 
         }
 
