@@ -12,5 +12,11 @@ namespace RockPaperScissors
 
         // todo: add randomization dice+1 method
 
+        public void GetGesture()
+        {
+            Random rnd = new Random();
+            int selector = rnd.Next(1, 6);
+            currentGesture = gestureOptions[selector];
+        }
     }
 }
