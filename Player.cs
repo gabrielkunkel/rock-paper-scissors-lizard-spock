@@ -9,7 +9,7 @@ namespace RockPaperScissors
     class Player
     {
 
-        // todo: score
+        int playerScore;
 
         public virtual string CreateGesture(List<string> gestureList)
         {

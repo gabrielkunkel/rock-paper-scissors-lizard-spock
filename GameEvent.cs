@@ -21,6 +21,8 @@ namespace RockPaperScissors
 
         // GetResponse
 
+
+
         public void Print()
         {
             Console.WriteLine(eventText);

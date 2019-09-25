@@ -8,5 +8,8 @@ namespace RockPaperScissors
 {
     class Computer : Player
     {
+
+        // todo: add randomization dice+1 method
+
     }
 }
