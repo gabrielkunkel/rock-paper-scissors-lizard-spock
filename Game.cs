@@ -10,7 +10,6 @@ namespace RockPaperScissors
     {
         Dictionary<string, string[]> beats = new Dictionary<string, string[]>();
         string secondPlayerChoice;
-        bool didFirstPlayerWinGame;
         bool isGameNotDoneYet = true;
 
         public Game(string secondPlayerChoice)
@@ -28,12 +27,25 @@ namespace RockPaperScissors
         {
             Human firstPlayer = new Human();
             Human secondPlayer = new Human(); // todo: add computer option
+            bool cats = true;
 
             do
             {
-                firstPlayer.GetGesture();
-                Console.Clear();
-                secondPlayer.GetGesture();
+                do
+                {
+                    firstPlayer.GetGesture();
+                    Console.Clear();
+                    secondPlayer.GetGesture();
+                    if (firstPlayer.currentGesture != secondPlayer.currentGesture)
+                    {
+                        cats = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That was a cats game. You both chose " + firstPlayer.currentGesture);
+                        Console.WriteLine("Redo!");
+                    }
+                } while (cats);
 
                 // add to score
                 bool result = DoesFirstPlayerWin(firstPlayer.currentGesture, secondPlayer.currentGesture);
