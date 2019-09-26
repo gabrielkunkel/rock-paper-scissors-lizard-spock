@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors
 {
-    class Computer : Player
+    public class Computer : Player
     {
         List<string> gestureOptions = new List<string>(new string[] { "rock", "paper", "scissors", "lizard", "Spock" });
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors
 {
-    abstract class Player
+    public abstract class Player
     {
         public int playerScore = 0;
         public string currentGesture;

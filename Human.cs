@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors
 {
-    class Human : Player
+    public class Human : Player
     {
 
         public Human() 

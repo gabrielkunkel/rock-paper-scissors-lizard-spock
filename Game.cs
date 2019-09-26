@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors
 {
-    class Game
+    public class Game
     {
         string secondPlayerChoice;
-        Player firstPlayer;
-        Player secondPlayer;
+        public Player firstPlayer;
+        public Player secondPlayer;
         Dictionary<string, string[]> beats = new Dictionary<string, string[]>();
         bool cats = true;
         bool continueGame = true;
@@ -58,8 +58,6 @@ namespace RockPaperScissors
                 
 
             } while (secondPlayerChoice == "human" || secondPlayerChoice == "computer");
-
-
         }
 
         public void PlayGame(Player firstPlayer, Player secondPlayer)
