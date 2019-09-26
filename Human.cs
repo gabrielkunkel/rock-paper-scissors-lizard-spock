@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RockPaperScissors
@@ -14,7 +15,7 @@ namespace RockPaperScissors
             
         }
 
-        public void Play(Human firstPlayer, Human secondPlayer)
+        public override void Play(Player firstPlayer, Player secondPlayer)
         {
             bool continueGame = true;
             bool cats = true;
@@ -37,6 +38,13 @@ namespace RockPaperScissors
                         Console.Clear();
                         Console.WriteLine("That was a cats game. You both chose " + firstPlayer.currentGesture);
                         Console.WriteLine("Redo!");
+                        Console.WriteLine("3");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("2");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("1");
+                        Thread.Sleep(1000);
+                        Console.Clear();
                         cats = true;
                     }
                 } while (cats);

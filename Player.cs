@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissors
 {
-    class Player
+    abstract class Player
     {
         Dictionary<string, string[]> beats = new Dictionary<string, string[]>();
         public int playerScore = 0;
@@ -21,6 +21,8 @@ namespace RockPaperScissors
             beats.Add("Spock", new string[] { "scissors", "rock" });
 
         }
+
+        public abstract void Play(Player firstPlayer, Player secondplayer);
 
         public virtual void GetGesture()
         {

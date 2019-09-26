@@ -9,6 +9,8 @@ namespace RockPaperScissors
     class Game
     {
         string secondPlayerChoice;
+        Player firstPlayer;
+        Player secondPlayer;
         
         public Game(string secondPlayerChoice)
         {
@@ -17,23 +19,21 @@ namespace RockPaperScissors
 
         public void Run()
         {
-            Human firstPlayer = new Human();
+            firstPlayer = new Human();
 
             do
             {
                 if (secondPlayerChoice == "human")
                 {
-                    Human secondPlayer = new Human();
+                    secondPlayer = new Human();
                     secondPlayer.Play(firstPlayer, secondPlayer);
                     firstPlayer.playerScore = 0;
                     secondPlayer.playerScore = 0;
                 }
                 else if (secondPlayerChoice == "computer")
                 {
-                    Computer secondPlayer = new Computer();
+                    secondPlayer = new Computer();
                     secondPlayer.Play(firstPlayer, secondPlayer);
-                    firstPlayer.playerScore = 0;
-                    secondPlayer.playerScore = 0;
                 }
                 else
                 {
@@ -57,6 +57,14 @@ namespace RockPaperScissors
                 Environment.Exit(0);
             }
         }
+
+        public void ResetGame()
+        {
+            firstPlayer.playerScore = 0;
+            secondPlayer.playerScore = 0;
+        }
+
+
 
     }
 }
