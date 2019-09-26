@@ -14,35 +14,63 @@ namespace RockPaperScissors
             
         }
 
-        public void GetGesture()
+        public void Play(Human firstPlayer, Human secondPlayer)
         {
-            bool keepLooping = true;
+            bool isGameNotDoneYet = true;
+            bool cats = true;
+
             do
             {
-                Console.WriteLine("Do you choose rock, paper, scissors, lizard, or Spock?");
-                string response = Console.ReadLine();
-
-                switch (response)
+                do
                 {
-                    case "rock":
-                    case "paper":
-                    case "scissors":
-                    case "lizard":
-                    case "Spock":
-                        currentGesture = response;
-                        keepLooping = false;
-                        break;
-                    case "exit":
-                        Environment.Exit(0);
-                        break;
-                    default:
-                        Console.WriteLine("I don't understand. (If you want to quit type 'exit'.");
-                        break;
+                    Console.WriteLine("First player's turn.");
+                    firstPlayer.GetGesture();
+                    Console.Clear();
+                    Console.WriteLine("Second player's turn.");
+                    secondPlayer.GetGesture();
+                    if (firstPlayer.currentGesture != secondPlayer.currentGesture)
+                    {
+                        cats = false;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("That was a cats game. You both chose " + firstPlayer.currentGesture);
+                        Console.WriteLine("Redo!");
+                        cats = true;
+                    }
+                } while (cats);
+
+                // add to score
+                bool result = DoesFirstPlayerWin(firstPlayer.currentGesture, secondPlayer.currentGesture);
+                if (result == true)
+                {
+                    firstPlayer.playerScore += 1;
+                    Console.Clear();
+                    Console.WriteLine("First Player won that round!");
                 }
-            } while (keepLooping);
+                else
+                {
+                    secondPlayer.playerScore += 1;
+                    Console.Clear();
+                    Console.WriteLine("Second Player won that round!");
+                }
 
+                // check if there's a game winner
+                if (firstPlayer.playerScore == 2)
+                {
+                    Console.WriteLine("The First Player won the game!");
+                    isGameNotDoneYet = false;
+                }
+
+                if (secondPlayer.playerScore == 2)
+                {
+                    Console.WriteLine("The Second Player won the game!");
+                    isGameNotDoneYet = false;
+                }
+
+            } while (isGameNotDoneYet);
         }
-
 
     }
 }

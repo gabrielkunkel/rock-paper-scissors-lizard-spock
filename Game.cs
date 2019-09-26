@@ -8,90 +8,39 @@ namespace RockPaperScissors
 {
     class Game
     {
-        Dictionary<string, string[]> beats = new Dictionary<string, string[]>();
         string secondPlayerChoice;
-        bool isGameNotDoneYet = true;
-
+        
         public Game(string secondPlayerChoice)
         {
             this.secondPlayerChoice = secondPlayerChoice;
-            beats.Add("rock", new string[] { "scissors", "lizard" });
-            beats.Add("paper", new string[] { "rock", "Spock" });
-            beats.Add("scissors", new string[] { "paper", "lizard" });
-            beats.Add("lizard", new string[] { "Spock", "paper" });
-            beats.Add("Spock", new string[] { "scissors", "rock" });
-
-        }
+          }
 
         public void Run()
         {
             Human firstPlayer = new Human();
-            Human secondPlayer = new Human(); // todo: add computer option
-            bool cats = true;
 
             do
             {
-                do
+                if (secondPlayerChoice == "human")
                 {
-                    firstPlayer.GetGesture();
-                    Console.Clear();
-                    secondPlayer.GetGesture();
-                    if (firstPlayer.currentGesture != secondPlayer.currentGesture)
-                    {
-                        cats = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("That was a cats game. You both chose " + firstPlayer.currentGesture);
-                        Console.WriteLine("Redo!");
-                        cats = true;
-                    }
-                } while (cats);
-
-                // add to score
-                bool result = DoesFirstPlayerWin(firstPlayer.currentGesture, secondPlayer.currentGesture);
-                if (result == true)
+                    Human secondPlayer = new Human();
+                    secondPlayer.Play(firstPlayer, secondPlayer);
+                }
+                else if (secondPlayerChoice == "computer")
                 {
-                    firstPlayer.playerScore += 1;
-                    Console.WriteLine("First Player won that round!");
+                    Computer secondPlayer = new Computer();
+                    secondPlayer.Play(firstPlayer, secondPlayer);
                 }
                 else
                 {
-                    secondPlayer.playerScore += 1;
-                    Console.WriteLine("Second Player won that round!");
-                }
-               
-                // check if there's a game winner
-                if (firstPlayer.playerScore == 2)
-                {
-                    Console.WriteLine("The First Player won the game!");
-                    isGameNotDoneYet = false;
+                    Console.WriteLine("That doesn't make sense. Did you want to play a human or computer?");
                 }
 
-                if (secondPlayer.playerScore == 2)
-                {
-                    Console.WriteLine("The Second Player won the game!");
-                    isGameNotDoneYet = false;
-                }
+                PlayAgain();
 
-            } while (isGameNotDoneYet);
+            } while (secondPlayerChoice == "human" || secondPlayerChoice == "computer");
 
-            PlayAgain();
-        }
 
-        public bool DoesFirstPlayerWin(string firstGesture, string secondGesture)
-        {
-            bool isWinner = false;
-
-            foreach (string item in beats[firstGesture])
-            {
-                if(item == secondGesture)
-                {
-                    isWinner = true;
-                }
-            }
-            
-            return isWinner;
         }
 
         public void PlayAgain()
