@@ -14,6 +14,7 @@ namespace RockPaperScissors
         Player secondPlayer;
         Dictionary<string, string[]> beats = new Dictionary<string, string[]>();
         bool cats = true;
+        bool continueGame = true;
 
         public Game(string secondPlayerChoice)
         {
@@ -60,51 +61,18 @@ namespace RockPaperScissors
 
         public void Play(Player firstPlayer, Player secondPlayer)
         {
-            bool continueGame = true;
 
             do
             {
                 do
                 {
-                    Console.WriteLine(secondPlayer.startMessage);
-                    firstPlayer.GetGesture();
-                    Console.Clear();
-                    Console.WriteLine(secondPlayer.turnMessage);
-                    secondPlayer.GetGesture();
-
+                    PlayRound();
                     TestForCats();
 
                 } while (cats);
 
-                // add to score
-                bool result = DoesFirstPlayerWin(firstPlayer.currentGesture, secondPlayer.currentGesture);
-                if (result == true)
-                {
-                    firstPlayer.playerScore += 1;
-                    Console.Clear();
-                    Console.WriteLine(firstPlayer.currentGesture + " vs. " + secondPlayer.currentGesture + ".");
-                    Console.WriteLine(secondPlayer.firstPlayerWinRoundMessage);
-                }
-                else
-                {
-                    secondPlayer.playerScore += 1;
-                    Console.Clear();
-                    Console.WriteLine(firstPlayer.currentGesture + " vs. " + secondPlayer.currentGesture + ".");
-                    Console.WriteLine(secondPlayer.secondPlayerWinRoundMessage);
-                }
-
-                // check if there's a game winner
-                if (firstPlayer.playerScore >= 2)
-                {
-                    Console.WriteLine(secondPlayer.firstPlayerWinGameMessage);
-                    continueGame = false;
-                }
-
-                if (secondPlayer.playerScore >= 2)
-                {
-                    Console.WriteLine(secondPlayer.secondPlayerWinGameMessage);
-                    continueGame = false;
-                }
+                Score();
+                CheckWinner();
 
             } while (continueGame);
         }
@@ -160,6 +128,49 @@ namespace RockPaperScissors
                 Console.Clear();
                 cats = true;
             }
+        }
+
+        public void Score()
+        {
+            bool result = DoesFirstPlayerWin(firstPlayer.currentGesture, secondPlayer.currentGesture);
+            if (result == true)
+            {
+                firstPlayer.playerScore += 1;
+                Console.Clear();
+                Console.WriteLine(firstPlayer.currentGesture + " vs. " + secondPlayer.currentGesture + ".");
+                Console.WriteLine(secondPlayer.firstPlayerWinRoundMessage);
+            }
+            else
+            {
+                secondPlayer.playerScore += 1;
+                Console.Clear();
+                Console.WriteLine(firstPlayer.currentGesture + " vs. " + secondPlayer.currentGesture + ".");
+                Console.WriteLine(secondPlayer.secondPlayerWinRoundMessage);
+            }
+        }
+
+        public void CheckWinner()
+        {
+            if (firstPlayer.playerScore >= 2)
+            {
+                Console.WriteLine(secondPlayer.firstPlayerWinGameMessage);
+                continueGame = false;
+            }
+
+            if (secondPlayer.playerScore >= 2)
+            {
+                Console.WriteLine(secondPlayer.secondPlayerWinGameMessage);
+                continueGame = false;
+            }
+        }
+
+        public void PlayRound()
+        {
+            Console.WriteLine(secondPlayer.startMessage);
+            firstPlayer.GetGesture();
+            Console.Clear();
+            Console.WriteLine(secondPlayer.turnMessage);
+            secondPlayer.GetGesture();
         }
 
     }
