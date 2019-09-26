@@ -27,13 +27,13 @@ namespace RockPaperScissors
                 {
                     secondPlayer = new Human();
                     secondPlayer.Play(firstPlayer, secondPlayer);
-                    firstPlayer.playerScore = 0;
-                    secondPlayer.playerScore = 0;
+                    ResetGame();
                 }
                 else if (secondPlayerChoice == "computer")
                 {
                     secondPlayer = new Computer();
                     secondPlayer.Play(firstPlayer, secondPlayer);
+                    ResetGame();
                 }
                 else
                 {
