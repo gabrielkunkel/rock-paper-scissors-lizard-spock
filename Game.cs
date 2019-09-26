@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RockPaperScissors
@@ -11,11 +12,20 @@ namespace RockPaperScissors
         string secondPlayerChoice;
         Player firstPlayer;
         Player secondPlayer;
-        
+        Dictionary<string, string[]> beats = new Dictionary<string, string[]>();
+        bool cats = true;
+
         public Game(string secondPlayerChoice)
         {
             this.secondPlayerChoice = secondPlayerChoice;
-          }
+            beats.Add("rock", new string[] { "scissors", "lizard" });
+            beats.Add("paper", new string[] { "rock", "Spock" });
+            beats.Add("scissors", new string[] { "paper", "lizard" });
+            beats.Add("lizard", new string[] { "Spock", "paper" });
+            beats.Add("Spock", new string[] { "scissors", "rock" });
+            // "rock", {"scissors", "lizard"}, {"rock smashes scissors", "rock crushes lizard"}
+
+        }
 
         public void Run()
         {
@@ -26,13 +36,13 @@ namespace RockPaperScissors
                 if (secondPlayerChoice == "human")
                 {
                     secondPlayer = new Human();
-                    secondPlayer.Play(firstPlayer, secondPlayer);
+                    Play(firstPlayer, secondPlayer);
                     ResetGame();
                 }
                 else if (secondPlayerChoice == "computer")
                 {
                     secondPlayer = new Computer();
-                    secondPlayer.Play(firstPlayer, secondPlayer);
+                    Play(firstPlayer, secondPlayer);
                     ResetGame();
                 }
                 else
@@ -47,6 +57,58 @@ namespace RockPaperScissors
 
 
         }
+
+        public void Play(Player firstPlayer, Player secondPlayer)
+        {
+            bool continueGame = true;
+
+            do
+            {
+                do
+                {
+                    Console.WriteLine(secondPlayer.startMessage);
+                    firstPlayer.GetGesture();
+                    Console.Clear();
+                    Console.WriteLine(secondPlayer.turnMessage);
+                    secondPlayer.GetGesture();
+
+                    TestForCats();
+
+                } while (cats);
+
+                // add to score
+                bool result = DoesFirstPlayerWin(firstPlayer.currentGesture, secondPlayer.currentGesture);
+                if (result == true)
+                {
+                    firstPlayer.playerScore += 1;
+                    Console.Clear();
+                    Console.WriteLine(firstPlayer.currentGesture + " vs. " + secondPlayer.currentGesture + ".");
+                    Console.WriteLine(secondPlayer.firstPlayerWinRoundMessage);
+                }
+                else
+                {
+                    secondPlayer.playerScore += 1;
+                    Console.Clear();
+                    Console.WriteLine(firstPlayer.currentGesture + " vs. " + secondPlayer.currentGesture + ".");
+                    Console.WriteLine(secondPlayer.secondPlayerWinRoundMessage);
+                }
+
+                // check if there's a game winner
+                if (firstPlayer.playerScore >= 2)
+                {
+                    Console.WriteLine(secondPlayer.firstPlayerWinGameMessage);
+                    continueGame = false;
+                }
+
+                if (secondPlayer.playerScore >= 2)
+                {
+                    Console.WriteLine(secondPlayer.secondPlayerWinGameMessage);
+                    continueGame = false;
+                }
+
+            } while (continueGame);
+        }
+
 
         public void PlayAgain()
         {
@@ -64,7 +126,41 @@ namespace RockPaperScissors
             secondPlayer.playerScore = 0;
         }
 
+        public bool DoesFirstPlayerWin(string firstGesture, string secondGesture)
+        {
+            bool isWinner = false;
 
+            foreach (string item in beats[firstGesture])
+            {
+                if (item == secondGesture)
+                {
+                    isWinner = true;
+                }
+            }
+
+            return isWinner;
+        }
+
+        public void TestForCats() {
+            if (firstPlayer.currentGesture != secondPlayer.currentGesture)
+            {
+                cats = false;
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("That was a cats game. You both chose " + firstPlayer.currentGesture);
+                Console.WriteLine("Redo!");
+                Console.WriteLine("3");
+                Thread.Sleep(500);
+                Console.WriteLine("2");
+                Thread.Sleep(400);
+                Console.WriteLine("1");
+                Thread.Sleep(300);
+                Console.Clear();
+                cats = true;
+            }
+        }
 
     }
 }
