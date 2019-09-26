@@ -1,7 +1,0 @@
-Z:\Documents\DevCodeCamp\Week_03\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.csprojAssemblyReference.cache
-Z:\Documents\DevCodeCamp\Week_03\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.csproj.CoreCompileInputs.cache
-Z:\Documents\DevCodeCamp\Week_03\RockPaperScissors\RockPaperScissors\bin\Debug\RockPaperScissors.exe.config
-Z:\Documents\DevCodeCamp\Week_03\RockPaperScissors\RockPaperScissors\bin\Debug\RockPaperScissors.exe
-Z:\Documents\DevCodeCamp\Week_03\RockPaperScissors\RockPaperScissors\bin\Debug\RockPaperScissors.pdb
-Z:\Documents\DevCodeCamp\Week_03\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.exe
-Z:\Documents\DevCodeCamp\Week_03\RockPaperScissors\RockPaperScissors\obj\Debug\RockPaperScissors.pdb
