@@ -25,11 +25,15 @@ namespace RockPaperScissors
                 {
                     Human secondPlayer = new Human();
                     secondPlayer.Play(firstPlayer, secondPlayer);
+                    firstPlayer.playerScore = 0;
+                    secondPlayer.playerScore = 0;
                 }
                 else if (secondPlayerChoice == "computer")
                 {
                     Computer secondPlayer = new Computer();
                     secondPlayer.Play(firstPlayer, secondPlayer);
+                    firstPlayer.playerScore = 0;
+                    secondPlayer.playerScore = 0;
                 }
                 else
                 {
@@ -37,6 +41,7 @@ namespace RockPaperScissors
                 }
 
                 PlayAgain();
+                
 
             } while (secondPlayerChoice == "human" || secondPlayerChoice == "computer");
 

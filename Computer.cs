@@ -8,18 +8,18 @@ namespace RockPaperScissors
 {
     class Computer : Player
     {
-        List<string> gestureOptions = new List<string>(new string[] { "rock", "paper", "scissors", "lizard", "Spock", });
+        List<string> gestureOptions = new List<string>(new string[] { "rock", "paper", "scissors", "lizard", "Spock" });
 
         public override void GetGesture()
         {
             Random rnd = new Random();
-            int selector = rnd.Next(1, 6);
+            int selector = rnd.Next(5);
             currentGesture = gestureOptions[selector];
         }
 
         public void Play(Human firstPlayer, Computer secondPlayer)
         {
-            bool isGameNotDoneYet = true;
+            bool continueGame = true;
             bool cats = true;
 
             do
@@ -64,19 +64,19 @@ namespace RockPaperScissors
                 }
 
                 // check if there's a game winner
-                if (firstPlayer.playerScore == 2)
+                if (firstPlayer.playerScore >= 2)
                 {
                     Console.WriteLine("The First Player won the game!");
-                    isGameNotDoneYet = false;
+                    continueGame = false;
                 }
 
-                if (secondPlayer.playerScore == 2)
+                if (secondPlayer.playerScore >= 2)
                 {
                     Console.WriteLine("The computer won the game!");
-                    isGameNotDoneYet = false;
+                    continueGame = false;
                 }
 
-            } while (isGameNotDoneYet);
+            } while (continueGame);
         }
 
     }

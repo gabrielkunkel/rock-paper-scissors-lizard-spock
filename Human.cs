@@ -16,7 +16,7 @@ namespace RockPaperScissors
 
         public void Play(Human firstPlayer, Human secondPlayer)
         {
-            bool isGameNotDoneYet = true;
+            bool continueGame = true;
             bool cats = true;
 
             do
@@ -60,16 +60,16 @@ namespace RockPaperScissors
                 if (firstPlayer.playerScore == 2)
                 {
                     Console.WriteLine("The First Player won the game!");
-                    isGameNotDoneYet = false;
+                    continueGame = false;
                 }
 
                 if (secondPlayer.playerScore == 2)
                 {
                     Console.WriteLine("The Second Player won the game!");
-                    isGameNotDoneYet = false;
+                    continueGame = false;
                 }
 
-            } while (isGameNotDoneYet);
+            } while (continueGame);
         }
 
     }
