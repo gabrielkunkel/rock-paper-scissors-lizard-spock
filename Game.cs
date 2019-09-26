@@ -16,34 +16,37 @@ namespace RockPaperScissors
         bool cats = true;
         bool continueGame = true;
 
-        public Game(string secondPlayerChoice)
+        public Game()
         {
-            this.secondPlayerChoice = secondPlayerChoice;
             beats.Add("rock", new string[] { "scissors", "lizard" });
             beats.Add("paper", new string[] { "rock", "Spock" });
             beats.Add("scissors", new string[] { "paper", "lizard" });
             beats.Add("lizard", new string[] { "Spock", "paper" });
             beats.Add("Spock", new string[] { "scissors", "rock" });
-            // "rock", {"scissors", "lizard"}, {"rock smashes scissors", "rock crushes lizard"}
-
         }
 
-        public void Run()
+        public void RunGame()
         {
             firstPlayer = new Human();
 
+            Console.WriteLine("Welcome to Rock, Paper, Scissors, Lizard, Spock!");
+
             do
             {
+                Console.WriteLine("Do you want to play against a human or the computer? (human/computer/quit)");
+                secondPlayerChoice = Console.ReadLine();
+
+
                 if (secondPlayerChoice == "human")
                 {
                     secondPlayer = new Human();
-                    Play(firstPlayer, secondPlayer);
+                    PlayGame(firstPlayer, secondPlayer);
                     ResetGame();
                 }
                 else if (secondPlayerChoice == "computer")
                 {
                     secondPlayer = new Computer();
-                    Play(firstPlayer, secondPlayer);
+                    PlayGame(firstPlayer, secondPlayer);
                     ResetGame();
                 }
                 else
@@ -59,9 +62,8 @@ namespace RockPaperScissors
 
         }
 
-        public void Play(Player firstPlayer, Player secondPlayer)
+        public void PlayGame(Player firstPlayer, Player secondPlayer)
         {
-
             do
             {
                 do
@@ -76,7 +78,6 @@ namespace RockPaperScissors
 
             } while (continueGame);
         }
-
 
         public void PlayAgain()
         {
